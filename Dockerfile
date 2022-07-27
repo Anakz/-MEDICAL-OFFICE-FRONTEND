@@ -1,14 +1,15 @@
-FROM python:3.10.4-slim-buster
+FROM ubuntu
+# FROM python:3.10.4-slim-buster
 
-WORKDIR /app
+# WORKDIR /app
 
-COPY requirements.txt requirements.txt
+# COPY requirements.txt requirements.txt
 
-RUN pip3 install -r requirements.txt
+# RUN pip3 install -r requirements.txt
 
-COPY . .
+# COPY . .
 
-CMD [ "python", "project/manage.py", "runserver", "0.0.0.0:8765" ]
+# CMD [ "python", "project/manage.py", "runserver", "0.0.0.0:8765" ]
 
 # -------------------------------------------
 # FROM python:3.10.4-slim-buster
