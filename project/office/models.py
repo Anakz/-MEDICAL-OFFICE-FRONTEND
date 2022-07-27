@@ -1,4 +1,4 @@
-from asyncio.windows_events import NULL
+# from asyncio.windows_events import NULL
 from datetime import datetime
 from django.db import models
 
@@ -17,9 +17,9 @@ class Patient(models.Model):
     email = models.fields.EmailField(max_length=100, null=False)
     password = models.fields.CharField(max_length=100, null=False)
     address = models.fields.CharField(max_length=500, null=False)
-    gender = models.fields.CharField(max_length=10, null=True, default=NULL)
+    gender = models.fields.CharField(max_length=10, null=True, default=None)
     dateBirth = models.fields.DateField(null=False)
-    isDelete = models.fields.DateTimeField(null=True, default=NULL, blank=True)
+    isDelete = models.fields.DateTimeField(null=True, default=None, blank=True)
 
 
 class User(models.Model):
@@ -38,10 +38,10 @@ class User(models.Model):
         validators=[MinValueValidator(0)],
         null=True,
         blank=True)
-    beginDate = models.fields.DateField(null=True, blank=True, default=NULL)
-    endDate = models.fields.DateField(null=True, blank=True, default=NULL)
+    beginDate = models.fields.DateField(null=True, blank=True, default=None)
+    endDate = models.fields.DateField(null=True, blank=True, default=None)
     role = models.fields.CharField(max_length=20, null=False)
-    isDelete = models.fields.DateTimeField(null=True, default=NULL, blank=True)
+    isDelete = models.fields.DateTimeField(null=True, default=None, blank=True)
 
 class Schedule(models.Model):
 
@@ -50,7 +50,7 @@ class Schedule(models.Model):
 
     date = models.fields.DateTimeField(null=True, blank=True)
     availability = models.fields.BooleanField(default=False)
-    isDelete = models.fields.DateTimeField(null=True, default=NULL, blank=True)
+    isDelete = models.fields.DateTimeField(null=True, default=None, blank=True)
 
     user = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
 
@@ -70,7 +70,7 @@ class Appointment(models.Model):
         null=False)
     reason = models.fields.CharField(max_length=1000, null=False)
     prescription = models.fields.CharField(max_length=2000, null=True, blank=True)
-    isDelete = models.fields.DateTimeField(null=True, default=NULL, blank=True)
+    isDelete = models.fields.DateTimeField(null=True, default=None, blank=True)
 
     patient = models.ForeignKey(Patient, null=True, blank=True, on_delete=models.SET_NULL)
     user = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
@@ -91,7 +91,7 @@ class MedicalFile(models.Model):
     allergy = models.fields.CharField(max_length=2000, null=True, blank=True)
     vaccination = models.fields.CharField(max_length=2000, null=False)
     healthInsurance = models.fields.CharField(max_length=500, null=False)
-    isDelete = models.fields.DateTimeField(null=True, default=NULL, blank=True)
+    isDelete = models.fields.DateTimeField(null=True, default=None, blank=True)
 
     patient = models.ForeignKey(Patient, null=True, blank=True, on_delete=models.SET_NULL)
 
